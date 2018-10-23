@@ -1,0 +1,47 @@
+.button {
+    background: $button-default-color;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: $padding-med;
+    font-size: $base-font-size;
+    margin-bottom: $space;
+    outline: none;
+    transition: 0.3s;
+    line-height:1.2;
+}
+
+.button-hover:hover {
+    background-color: darken($button-default-color, 10%)
+}
+
+.button--link {
+    display:inline-block;
+    text-decoration: none;
+}
+.button--pill{
+    transition: 0.3s;
+    background:transparent;
+    color:$button-default-color;
+    border:1px solid $button-default-color;
+    padding:.3rem .8rem;
+    margin:0 $space / 2 0 0;
+    outline: none;
+}
+.button--pill:hover{
+    color:$button-color;
+    background: $button-default-color;
+}
+.button--secondary {
+    color:$button-secondary-bg;
+    border:1px solid #dddddd;
+    background: $very-light-grey;
+}
+.button--header {
+    background: $button-header-bg;
+    color:$button-color;
+    margin:0;
+    &:hover{
+        background: darken($button-header-bg, 15%);
+    }
+}
