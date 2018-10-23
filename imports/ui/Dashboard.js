@@ -8,7 +8,12 @@ export default () => (
     <div>
         <PrivateHeader title="Recipes"/>
         <div className="page-content">
-            <RecipeList />
+            <div className="page-content__sidebar">
+                <RecipeList/>
+            </div>      
+            <div className="page-content__main">
+                <p>Editor component Goes Here</p>
+            </div>
         </div>
     </div>
 )

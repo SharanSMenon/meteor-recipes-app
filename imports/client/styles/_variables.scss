@@ -4,7 +4,8 @@ $brand-primary:#5b4681;
 $very-light-grey:#f9f9f9;
 $dark-grey:#777777;
 // Sizes
-$site-max-width:50rem;
+$site-max-width:100rem;
+$breakpoint: 45rem;
 // Font Sizes
 $base-font-size:1.4rem;
 $large-font-size:1.8rem;
@@ -24,9 +25,15 @@ $button-header-bg:#3d0d99;
 $item-border:darken($very-light-grey, 15%);
 $item-bg:$very-light-grey;
 $item-text-color:#777777;
+$item-border-width: 4px;
 
 $boxed-view-overlay-bg: $grey;
 $boxed-view-bg: white;
 
 $header-bg: $brand-primary;
 $header-height:6rem;
+
+// page-content 
+$page-content-sidebar-width:30rem;
+$page-content-main-width:calc(#{$site-max-width} - #{$page-content-sidebar-width});
+$page-content-height: calc(100vh - #{$header-height});

@@ -11,7 +11,6 @@ export const RecipeListHeader = (props) => {
         <div className="item-list__header">
             <button className="button button-hover" onClick={() => {
                 Meteor.call('recipes.insert', (err, res) => {
-                    console.log("Clicked")
                     if (res) {
                         props.Session.set('selectedRecipeId', res);
                         props.Session.set('isNavOpen', false)

@@ -3,8 +3,12 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import PropTypes from 'prop-types';
 import { Session } from 'meteor/session';
+import FlipMove from 'react-flip-move';
+
 import { Recipes } from '../api/recipes';
 import RecipeListHeader from './RecipeListHeader';
+import RecipeListItem from './RecipesListItem';
+import RecipeListEmptyItem from './RecipesListEmptyItem';
 
 export class RecipeList extends React.Component {
     constructor(props) {
@@ -19,11 +23,13 @@ export class RecipeList extends React.Component {
     }
     render() {
         const recipes = this.props.recipes;
-        console.log(recipes)
         return (
             <div className="item-list">
                 <RecipeListHeader />
-                {recipes.map(recipe => <p key={recipe._id}>{recipe.title}</p>)}
+                {recipes.length == 0 ? <RecipeListEmptyItem /> : undefined}
+                <FlipMove>
+                    {recipes.map(recipe => (<RecipeListItem recipe={recipe} key={recipe._id} />))}
+                </FlipMove>
             </div>
         )
     }
@@ -35,8 +41,7 @@ RecipeList.propTypes = {
 
 export default createContainer(() => {
     const selectedRecipeId = Session.get('selectedRecipeId')
-    Meteor.subscribe('notes');
-
+    Meteor.subscribe('recipes');
     return {
         recipes: Recipes.find({}, {
             sort: {

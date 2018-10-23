@@ -27,7 +27,8 @@ Meteor.methods({
             ingredients:[],
             updatedAt: moment().valueOf(),
             time:'',
-            imgUrl:''
+            imgUrl:'',
+            userId:this.userId
         })
     },
     'recipes.remove'(_id) {
