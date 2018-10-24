@@ -6,4 +6,5 @@
     overflow: scroll;
     padding: $large-space;
     width: 100%;
+    -webkit-overflow-scrolling: touch;
 }
