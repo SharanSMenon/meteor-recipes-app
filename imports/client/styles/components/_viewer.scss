@@ -1,0 +1,9 @@
+.viewer-content {
+    background-color: white;
+    border: 1px solid $grey;
+    // display: flex;
+    // flex-direction: column;
+    overflow: scroll;
+    padding: $large-space;
+    width: 100%;
+}

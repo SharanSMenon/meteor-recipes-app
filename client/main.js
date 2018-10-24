@@ -22,6 +22,12 @@ Tracker.autorun(() => {
 })
 
 Tracker.autorun(() => {
+    const viewingRecipeId = Session.get('viewingRecipeId');
+    if (viewingRecipeId) {
+        browserHistory.replace(`/view/${viewingRecipeId}`)
+    }
+})
+Tracker.autorun(() => {
     const isNavOpen = Session.get('isNavOpen');
     document.body.classList.toggle('is-nav-open', isNavOpen);
 })
@@ -29,6 +35,7 @@ Tracker.autorun(() => {
 Meteor.startup(() => {
     Session.set('selectedRecipeId', undefined)
     Session.set('isNavOpen', false);
+    Session.set('viewingRecipeId',undefined)
     const app = document.getElementById('app');
     ReactDOM.render(routes, app)
 })

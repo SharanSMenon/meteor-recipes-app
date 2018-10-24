@@ -138,7 +138,7 @@ Editor.propTypes = {
 // Default Export
 export default createContainer(() => {
     const selectedRecipeId = Session.get('selectedRecipeId');
-
+    console.log(Recipes.find({}).fetch())
     return {
         selectedRecipeId,
         recipe: Recipes.findOne(selectedRecipeId),
