@@ -17,9 +17,12 @@ export default (props) => {
         <div className="editor__step-list__item">
             <div className="step-item" dangerouslySetInnerHTML={{__html:md.render(step.step)}}>
             </div>
-            <button onClick={() => {
-                Meteor.call('recipes.removeStep',props.recipeId, step._id)
-            }} className="button button-danger">Remove</button>
+            <div className="step-item-buttons">
+                {/* <button className="button">Edit Step</button> */}
+                <button onClick={() => {
+                    Meteor.call('recipes.removeStep',props.recipeId, step._id)
+                }} className="button button-danger">Remove</button>
+            </div>
         </div>
     )
 }
