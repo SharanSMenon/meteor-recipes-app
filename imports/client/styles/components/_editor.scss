@@ -1,0 +1,47 @@
+.editor {
+    background-color: white;
+    border: 1px solid $grey;
+    // display: flex;
+    // flex-direction: column;
+    overflow: scroll;
+    padding: $large-space;
+    width: 100%;
+    input {
+        width: 100%;
+    }
+    textarea {
+        width: 100%;
+    }
+}
+
+.editor__title {
+    border: none;
+    border-bottom: 2px solid $grey;
+    font-size: $large-font-size;
+    margin-bottom: $large-space;
+    outline: none;
+    padding: $input-spacing;
+    transition:0.3s ease;
+}
+.editor__title:focus{
+    border-bottom: 2px solid $brand-primary;
+}
+.editor__desc {
+    font-weight: 300;
+    height:10rem;
+    transition:0.3s ease;
+    margin-bottom: $large-space;
+    outline: none;
+    border: 2px solid $input-border;
+    padding: $input-spacing;
+    resize: none;
+    -webkit-overflow-scrolling: touch;
+}
+.editor__desc:focus{
+    border: 2px solid $brand-primary;
+}
+.editor__message {
+    text-align: center;
+    margin: $large-space * 2;
+    font-style: italic;
+}

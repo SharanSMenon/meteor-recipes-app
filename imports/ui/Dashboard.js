@@ -2,6 +2,7 @@ import React from 'react';
 
 import PrivateHeader from './PrivateHeader';
 import RecipeList from './RecipesList';
+import Editor from './Editor'
 import { Recipes } from '../api/recipes';
 
 export default () => (
@@ -12,7 +13,7 @@ export default () => (
                 <RecipeList/>
             </div>      
             <div className="page-content__main">
-                <p>Editor component Goes Here</p>
+                <Editor />
             </div>
         </div>
     </div>

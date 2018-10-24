@@ -1,6 +1,6 @@
 .boxed-view {
     align-items: center;
-    background: $boxed-view-overlay-bg;
+    background: $very-light-grey;
     display:flex;
     justify-content: center;
     width: 100vw;
@@ -12,6 +12,7 @@
     padding: 2.4rem;
     text-align: center;
     width:24rem;
+    border: 1px solid $boxed-view-border-color;
 }
 .boxed-view__form{
     display:flex;
@@ -19,10 +20,15 @@
 }
 .boxed-view--modal {
     background: fade-out($grey, .3);
+    outline: none;
     position: fixed;
+    border: 2px solid $boxed-view-border-color;
     top:0;
     left:0;
     right:0;
     bottom:0;
-
+    z-index: 2;
+}
+.boxed-view__box:focus{
+    outline: 0;
 }

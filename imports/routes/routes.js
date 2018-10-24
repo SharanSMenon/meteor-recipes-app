@@ -6,25 +6,13 @@ import Signup from './../ui/Signup';
 import Dashboard from './../ui/Dashboard';
 import NotFound from './../ui/NotFound';
 import Login from './../ui/Login';
-const unAuthPages = ['/', '/signup'];
-const authPages = ['/dashboard'];
+
 const onEnterRecipePage = (nextState) => {
     Session.set('selectedRecipeId', nextState.params.id)
 };
 
 const onLeaveRecipePage = () => {
     Session.set('selectedRecipeId', undefined)
-}
-
-const onEnterPublicPage = () => {
-    if (Meteor.userId()){
-        browserHistory.replace('/dashboard')
-    }
-}
-const onEnterPrivatePage = () => {
-    if (!Meteor.userId()){
-        browserHistory.replace('/')
-    }
 }
 
 export const onAuthChange = (isAuthenticated, currentPagePrivacy) => {
@@ -51,7 +39,7 @@ export const routes = (
         <Route path="/signup" component={Signup} privacy="unauth"/>
         <Route exact path="/" component={Login} privacy="unauth"/>
         <Route path="/dashboard" component={Dashboard} privacy="auth"/>
-        <Route path="/dashboard/:id" component={Dashboard} onEnter={onEnterRecipePage} onLeave={onLeaveRecipePage}privacy="auth"/>
+        <Route path="/dashboard/:id" component={Dashboard} onEnter={onEnterRecipePage} onLeave={onLeaveRecipePage} privacy="auth"/>
         <Route path="*" component={NotFound}/>
     </Route>
 </Router>

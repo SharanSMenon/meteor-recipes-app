@@ -14,3 +14,12 @@
         margin:0;
     }
 }
+
+.header__nav-toggle{
+    cursor: pointer;
+    height: 3rem;
+    width:3rem;
+    @include desktop {
+        display: none;
+    }
+}

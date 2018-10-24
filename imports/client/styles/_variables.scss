@@ -1,6 +1,6 @@
 // Colors
 $grey:#dddddd;
-$brand-primary:#5b4681;
+$brand-primary:#1eb23e;
 $very-light-grey:#f9f9f9;
 $dark-grey:#777777;
 // Sizes
@@ -17,10 +17,10 @@ $large-space: 2.8rem;
 $button-default-color:$brand-primary;
 $button-color: white;
 $button-pill-color: $brand-primary;
-$button-secondary-bg: $grey;
+$button-secondary-bg: $very-light-grey;
 $button-secondary-color: $dark-grey;
 $button-secondary-border-color: $grey;
-$button-header-bg:#3d0d99;
+$button-header-bg:#005b13;
 // Item
 $item-border:darken($very-light-grey, 15%);
 $item-bg:$very-light-grey;
@@ -37,3 +37,8 @@ $header-height:6rem;
 $page-content-sidebar-width:30rem;
 $page-content-main-width:calc(#{$site-max-width} - #{$page-content-sidebar-width});
 $page-content-height: calc(100vh - #{$header-height});
+
+$input-border: $grey;
+$input-spacing: 1rem;
+
+$boxed-view-border-color: $grey;

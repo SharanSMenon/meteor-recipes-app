@@ -19,13 +19,23 @@ export class RecipeList extends React.Component {
         this.onFilterChange = this.onFilterChange.bind(this)
     }
     onFilterChange(e) {
-        console.log(e)
+        this.setState({
+            filters: e.target.value
+        })
     }
     render() {
-        const recipes = this.props.recipes;
+        const recipes = this.props.recipes.filter(recipe => recipe.title.toLowerCase().includes(this.state.filters.toLowerCase()));
         return (
             <div className="item-list">
                 <RecipeListHeader />
+                <div className="item-list__input">
+                    <input 
+                        type="text" 
+                        placeholder="Search..."
+                        value={this.state.filters}
+                        onChange={this.onFilterChange.bind(this)}
+                        />
+                </div>
                 {recipes.length == 0 ? <RecipeListEmptyItem /> : undefined}
                 <FlipMove>
                     {recipes.map(recipe => (<RecipeListItem recipe={recipe} key={recipe._id} />))}

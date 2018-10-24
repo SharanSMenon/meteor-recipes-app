@@ -33,15 +33,24 @@
     background: $button-default-color;
 }
 .button--secondary {
-    color:$button-secondary-bg;
-    border:1px solid #dddddd;
-    background: $very-light-grey;
+    color:$button-secondary-color;
+    border:1px solid $button-secondary-border-color;
+    background: $button-secondary-bg;
 }
 .button--header {
     background: $button-header-bg;
     color:$button-color;
     margin:0;
     &:hover{
-        background: darken($button-header-bg, 15%);
+        background: darken($button-header-bg, 7%);
+    }
+}
+.button-danger{
+    margin:0;
+    color:white;
+    background-color: firebrick;
+    border:1px solid darken(firebrick, 15%);
+    &:hover{
+        background-color: darken(firebrick, 15%)
     }
 }

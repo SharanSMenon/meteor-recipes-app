@@ -6,7 +6,7 @@ import {
 } from 'meteor/meteor';
 import SimpleSchema from 'simpl-schema';
 import moment from 'moment'
-
+import { ObjectID } from 'mongodb'
 export const Recipes = new Mongo.Collection('recipes');
 
 if (Meteor.isServer) {
@@ -61,6 +61,74 @@ Meteor.methods({
             $set: {
                 updatedAt: moment().valueOf(),
                 ...updates
+            }
+        })
+    },
+    'recipes.addIngredient'(_id, ingredient){
+        if (!this.userId) {
+            throw new Meteor.Error('not-authorized')
+        }
+        const x = new ObjectID();
+        const ingredientPush = {
+            _id: x.toHexString(),
+            ...ingredient
+        }
+        Recipes.update({
+            userId:this.userId,
+            _id
+        }, {
+            $push: {
+                ingredients: ingredientPush
+            }
+        })
+    },
+    'recipes.removeIngredient'(_id, ingredientId){
+        if (!this.userId) {
+            throw new Meteor.Error('not-authorized')
+        }
+
+        Recipes.update({
+            userId:this.userId,
+            _id
+        }, {
+            $pull:{
+                ingredients: {
+                    _id: ingredientId
+                }
+            }
+        })
+    },
+    'recipes.addStep'(_id, step) {
+        if (!this.userId) {
+            throw new Meteor.Error('not-authorized')
+        }
+        const x = new ObjectID();
+        const stepPush = {
+            _id: x.toHexString(),
+            ...step
+        }
+        Recipes.update({
+            userId:this.userId,
+            _id
+        }, {
+            $push: {
+                steps: stepPush
+            }
+        })
+    },
+    'recipes.removeStep'(_id, stepId) {
+        if (!this.userId) {
+            throw new Meteor.Error('not-authorized')
+        }
+
+        Recipes.update({
+            userId:this.userId,
+            _id
+        }, {
+            $pull:{
+                steps: {
+                    _id: stepId
+                }
             }
         })
     }
