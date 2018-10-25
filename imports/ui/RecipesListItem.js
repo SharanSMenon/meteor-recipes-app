@@ -11,8 +11,8 @@ export const RecipeListItem = (props) => {
             props.Session.set('selectedRecipeId', props.recipe._id)
             props.Session.set('isNavOpen', false)
         }}>
-            <h5>{props.recipe.title || 'Untitled Recipe'}</h5>
-            <p>Time: {props.recipe.time || 'None'}</p>
+            <h5 className="item__title">{props.recipe.title || 'Untitled Recipe'}</h5>
+            <p className="item__subtitle">Time: {props.recipe.time || 'None'}</p>
         </div>
     )
 }

@@ -22,7 +22,9 @@ export class StepsList extends React.Component {
             <div className="editor__steps">
                 <div className="editor__list">
                     <ol>
-                        {this.props.steps.map(step => {
+                        {this.props.steps.length === 0 ? (<div className="editor__ingredient-list__item-empty">
+                            <p className="empty-item">No Steps. Add one to get started</p>
+                    </div>): this.props.steps.map(step => {
                             return <StepsListItem key={step._id} step={step} recipeId={this.props._id}/>
                         })}
                     </ol>

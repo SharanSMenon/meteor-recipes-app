@@ -112,6 +112,13 @@ export class Editor extends React.Component {
                         <br />
                         <div>
                             <button onClick={() => {
+                                this.props.browserHistory.push(`/view/${this.props.recipe._id}`)
+                            }}
+                            className="button button-hover">
+                                Preview Recipe
+                            </button>
+                            <br />
+                            <button onClick={() => {
                                 this.setState({ modalIsOpen:true })
                             }}
                                 className="button button-danger">Delete Recipe</button>
@@ -138,7 +145,6 @@ Editor.propTypes = {
 // Default Export
 export default createContainer(() => {
     const selectedRecipeId = Session.get('selectedRecipeId');
-    console.log(Recipes.find({}).fetch())
     return {
         selectedRecipeId,
         recipe: Recipes.findOne(selectedRecipeId),

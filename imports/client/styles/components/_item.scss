@@ -57,6 +57,7 @@
     font-style: italic;
     padding: $space;
     text-align: center;
+    margin:0;
 }
 .editor__ingredient-list__item{
     border: 1px solid $grey;
@@ -69,6 +70,16 @@
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+}
+.editor__ingredient-list__item-empty{
+    border: 1px solid $grey;
+    cursor: pointer;
+    padding: $space;
+    transition: background-color .3s ease, border-left .3s ease;
+    background-color: $very-light-grey;
+    margin-bottom:0.5rem;
+    text-align: center;
+    align-items: center;
 }
 .editor__ingredient-list__item:hover{
     background-color: $grey;

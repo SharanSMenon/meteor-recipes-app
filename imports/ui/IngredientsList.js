@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
 import IngredientsListItem from './IngredientsListItem'
+import FlipMove from 'react-flip-move';
 export class IngredientsList extends React.Component {
     constructor(props) {
         super(props);
@@ -20,11 +21,11 @@ export class IngredientsList extends React.Component {
         return (
             <div className="editor__ingredients">
                 <div className="editor__list">
-                    <ol>
-                        {this.props.ingredients.map(ingredient => {
-                            return <IngredientsListItem key={ingredient._id} recipe={ingredient} recipeId={this.props._id}/>
-                        })}
-                    </ol>
+                    {this.props.ingredients.length === 0 ? (<div className="editor__ingredient-list__item-empty">
+                        <p className="empty-item">No Ingredients. Add one to get started</p>
+                    </div>): this.props.ingredients.map(ingredient => {
+                        return <IngredientsListItem key={ingredient._id} recipe={ingredient} recipeId={this.props._id}/>
+                    })}
                 </div>
                 <div className="ingredients__inputs">
                     <input
