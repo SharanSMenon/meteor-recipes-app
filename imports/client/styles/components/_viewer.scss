@@ -7,6 +7,9 @@
     padding: $large-space;
     width: 100%;
     -webkit-overflow-scrolling: touch;
+    .viewer__title{
+        margin:0;
+    }
     .viewer__subtitle {
         font-weight: 300;
     }

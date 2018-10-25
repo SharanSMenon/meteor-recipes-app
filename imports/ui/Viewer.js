@@ -6,9 +6,21 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Recipes } from '../api/recipes';
 import ViewStepListItem from './ViewStepListItem';
 import ViewIngListItem from './ViewIngListItem';
+import Remarkable from 'remarkable';
+
 export class Viewer extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
+        this.md = new Remarkable('full', {
+            html: false,
+            xhtmlOut: false,
+            breaks: false,
+            langPrefix: 'language-',
+            linkify: true,
+            linkTarget: '',
+            typographer: false,
+            quotes: '“”‘’'
+        })
     }
     render() {
         const recipeId = Session.get('viewingRecipeId')
@@ -20,10 +32,11 @@ export class Viewer extends React.Component {
                     <div className="page-content">
                         <div className="viewer-content">
                             <h1 className="viewer__title">{recipe.title}</h1>
+                            <div className="underline"></div>
                             <h2 className="viewer__subtitle">Time</h2>
                             <p>{recipe.time}</p>
                             <h2 className="viewer__subtitle">Description</h2>
-                            <p>{recipe.description}</p>
+                            <div className="box" dangerouslySetInnerHTML={{__html:this.md.render(recipe.description)}}></div>
                             <h2 className="viewer__subtitle">Ingredients</h2>
                             {recipe.ingredients.map((ing) => {
                                 return <ViewIngListItem key={ing._id} recipe={ing} />
