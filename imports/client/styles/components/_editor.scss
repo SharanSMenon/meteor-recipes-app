@@ -20,6 +20,9 @@
     border: 1px solid $grey;
     padding: $large-space;
     margin:$space 0 $space 0;
+    img {
+        width:100%;
+    }
 }
 
 .underline {
