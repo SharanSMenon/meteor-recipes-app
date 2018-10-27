@@ -33,9 +33,6 @@ export default class Login extends React.Component {
                         <input type="email" name="email" placeholder="Email..." ref="email" formNoValidate/>
                         <input type="password" name="password" placeholder="Password" ref="password" />
                         <button className="button button-hover">Login</button>
-                        <button type="button" className="button button-hover" onClick={this.onGoogleLogin.bind(this)}>
-                            Google
-                        </button>
                     </form>
                     <Link to="/signup">Need an account?</Link>
                 </div>
