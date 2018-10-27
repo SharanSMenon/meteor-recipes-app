@@ -21,3 +21,6 @@ accounts-password
 session
 fourseven:scss
 react-meteor-data
+service-configuration
+accounts-google
+accounts-ui

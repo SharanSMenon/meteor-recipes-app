@@ -3,10 +3,10 @@ import { Meteor } from 'meteor/meteor';
 import PublicHeader from './PublicHeader'
 import { Session } from 'meteor/session';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Recipes } from '../api/recipes';
 import ViewStepListItem from './ViewStepListItem';
 import ViewIngListItem from './ViewIngListItem';
 import Remarkable from 'remarkable';
+import { Accounts } from 'meteor/accounts-base';
 
 export class Viewer extends React.Component {
     constructor(props) {
@@ -35,16 +35,20 @@ export class Viewer extends React.Component {
                             <div className="underline"></div>
                             <h2 className="viewer__subtitle">Time</h2>
                             <p>{recipe.time}</p>
+                            <hr />
                             <h2 className="viewer__subtitle">Description</h2>
                             <div className="box" dangerouslySetInnerHTML={{__html:this.md.render(recipe.description)}}></div>
                             <h2 className="viewer__subtitle">Ingredients</h2>
                             {recipe.ingredients.map((ing) => {
                                 return <ViewIngListItem key={ing._id} recipe={ing} />
                             })}
+                            <hr />
                             <h2 className="viewer__subtitle">Steps</h2>
                             {recipe.steps.map((step) => {
                                 return <ViewStepListItem key={step._id} step={step} />
                             })}
+                            <hr />
+                            {Accounts.userId() == recipe.userId ? "Share this link with your friends!": undefined}
                         </div>
                     </div>
                 </div>
