@@ -22,6 +22,9 @@ export default (props) => {
                 <button onClick={() => {
                     Meteor.call('recipes.removeStep',props.recipeId, step._id)
                 }} className="button button-danger">Remove</button>
+                {/* <button className="button button-hover">
+                    Edit
+                </button> */}
             </div>
         </div>
     )

@@ -115,3 +115,12 @@
         }
     }
 }
+.step-item-buttons{
+    display:flex;
+    flex-direction: row;
+    button{
+        flex-grow: 1;
+        height:40px;
+        margin:1.3rem;
+    }
+}
