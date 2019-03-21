@@ -37,7 +37,7 @@ export class Viewer extends React.Component {
                             <p>{recipe.time}</p>
                             <hr />
                             <h2 className="viewer__subtitle">Description</h2>
-                            <div className="box" dangerouslySetInnerHTML={{__html:this.md.render(recipe.description)}}></div>
+                            <div className="box" dangerouslySetInnerHTML={{__html:recipe.description}}></div>
                             <h2 className="viewer__subtitle">Ingredients</h2>
                             {recipe.ingredients.map((ing) => {
                                 return <ViewIngListItem key={ing._id} recipe={ing} />
@@ -48,7 +48,7 @@ export class Viewer extends React.Component {
                                 return <ViewStepListItem key={step._id} step={step} />
                             })}
                             <hr />
-                            {Accounts.userId() == recipe.userId ? "Share this link with your friends!": undefined}
+                            <p>Share this link with your friends!</p>
                         </div>
                     </div>
                 </div>

@@ -5,16 +5,35 @@ import PropTypes from 'prop-types';
 import { Session } from 'meteor/session';
 import { Meteor } from 'meteor/meteor';
 import StepsListItem from './StepsListItem';
-
+import 'react-quill/dist/quill.snow.css'
+import ReactQuill from 'react-quill';
 export class StepsList extends React.Component {
     constructor(props) {
         super(props)   
+        this.state = {
+            step:"",
+            modules:{
+                toolbar:[
+                    [{'header':[1,2,3,4]}], 
+                    ['bold', 'italic', 'underline', 'strike'], 
+                    [{'color':[]}, { 'background': [] }],
+                    ['link', 'image'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'script': 'sub'}, { 'script': 'super' }],
+                
+                ]
+            }
+        }
+        this.onSubmit = this.onSubmit.bind(this)
+        this.onChange = this.onChange.bind(this)
     }
-
+    onChange(e){
+        this.setState({step:e})
+    }
     onSubmit(e) {
-        const step = this.refs.step.value;
+        const step = this.state.step;
         Meteor.call('recipes.addStep', this.props._id, { step })
-        this.refs.step.value = "";
+        this.setState({step:""})
 
     }
     render() {
@@ -30,12 +49,15 @@ export class StepsList extends React.Component {
                     </ol>
                 </div>
                 <div className="steps__inputs">
-                    <textarea
-                        type="text"
-                        ref="step"
-                        placeholder="Enter step here..."
-                        className="editor__desc"
-                    ></textarea>
+                    <ReactQuill 
+                        theme="snow"
+                        value={this.state.step || ""}
+                        onChange={this.onChange}
+                        modules={this.state.modules}
+                        style={{
+                            marginBottom:"2rem",
+                        }}
+                    />
                     <div>
                         <button className="button button-hover" onClick={this.onSubmit.bind(this)}>Add step</button>
                     </div>

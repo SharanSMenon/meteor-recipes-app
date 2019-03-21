@@ -15,7 +15,7 @@ export default (props) => {
     })
     return (
         <div className="editor__step-list__item">
-            <div className="step-item" dangerouslySetInnerHTML={{__html:md.render(step.step)}}>
+            <div className="step-item" dangerouslySetInnerHTML={{__html:step.step}}>
             </div>
         </div>
     )

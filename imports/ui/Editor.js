@@ -8,14 +8,26 @@ import Modal from 'react-modal'
 import { Recipes } from '../api/recipes';
 import IngredientList from './IngredientsList';
 import StepsList from './StepsList'
-
+import 'react-quill/dist/quill.snow.css'
+import ReactQuill from 'react-quill';
 export class Editor extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             title: '',
             time: '',
-            description: ''
+            description: '',
+            modules:{
+                toolbar:[
+                    [{'header':[1,2,3,4]}], 
+                    ['bold', 'italic', 'underline', 'strike'], 
+                    [{'color':[]}, { 'background': [] }],
+                    ['link', 'image'],
+                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                    [{ 'script': 'sub'}, { 'script': 'super' }],
+                
+                ]
+            }
         }
         this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
         this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -29,7 +41,7 @@ export class Editor extends React.Component {
         this.props.call('recipes.update', this.props.recipe._id, { time })
     }
     handleDescriptionChange(e) {
-        const description = e.target.value
+        const description = e
         this.setState({ description })
         this.props.call('recipes.update', this.props.recipe._id, { description });
     }
@@ -89,7 +101,7 @@ export class Editor extends React.Component {
                             className="editor__title"
                         />
                         <br />
-                        <label>Time:</label>
+                        <h2>Time:</h2>
                         <input
                             value={this.state.time}
                             placeholder="Time it takes..."
@@ -97,15 +109,18 @@ export class Editor extends React.Component {
                             type="text"
                             className="editor__time"
                         />
-                        <label>Description:</label>
-                        <textarea
-                            value={this.state.description}
-                            placeholder="Enter description here..."
+                        <hr></hr>
+                        <h2>Description:</h2>
+                        <ReactQuill 
+                            theme="snow"
+                            value={this.state.description || ''}
                             onChange={this.handleDescriptionChange}
-                            className="editor__desc"
-                        ></textarea>
+                            modules={this.state.modules}
+                        />
+                        <hr></hr>
                         <h2>Ingredients</h2>
                         <IngredientList ingredients={this.props.recipe.ingredients} _id={this.props.recipe._id}/>
+                        <hr></hr>
                         <h2>Steps</h2>
                         <StepsList steps={this.props.recipe.steps} _id={this.props.recipe._id}/>
                         <hr />
